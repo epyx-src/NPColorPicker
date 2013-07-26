@@ -265,7 +265,7 @@ void HSVtoRGB( CGFloat *r, CGFloat *g, CGFloat *b, CGFloat h, CGFloat s, CGFloat
 
 CGColorRef createDarkerCGColor(CGColorRef color, CGFloat factor ) {
    
-   CGFloat darker[3];
+   CGFloat darker[3] = { 0.0f, 0.0f, 0.0f };
    CGFloat *components = (CGFloat *)CGColorGetComponents(color);
    CGFloat componentCount = CGColorGetNumberOfComponents(color);
 
@@ -274,7 +274,7 @@ CGColorRef createDarkerCGColor(CGColorRef color, CGFloat factor ) {
    }
 
    if (componentCount == 4) {
-      CGFloat h,s,v;
+      CGFloat h = 0.0f, s = 0.0f, v = 0.0f;
       RGBtoHSL(components[0], components[1], components[2], &h, &s, &v);
       v = v * factor;
       HSLtoRGB(&darker[0], &darker[1], &darker[2], h, s, v);
